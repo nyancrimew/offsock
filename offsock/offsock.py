@@ -10,13 +10,12 @@ from PIL import Image, ImageDraw
 @click.argument('output', type=click.Path())
 def create(input, output, offset, rows, columns, padding):
     """
-    Print an image a grid offset pattern. Inspired by your favorite socks.
+    Print an image in a grid offset pattern. Inspired by your favorite socks.
     """
     in_image = Image.open(input)
     in_width = in_image.width
     in_height = in_image.height
     out_image = Image.new('RGBA', ((in_width + 2 * padding) * columns, (in_height + 2 * padding) * rows))
-    d = ImageDraw.Draw(out_image)
     skip = False
     step = 2 if offset else 1
     for r in range(rows):
